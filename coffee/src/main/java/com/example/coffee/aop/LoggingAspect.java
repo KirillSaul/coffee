@@ -1,4 +1,4 @@
-package com.example.coffee.config.aop;
+package com.example.coffee.aop;
 
 import lombok.extern.log4j.Log4j2;
 import org.aspectj.lang.JoinPoint;
@@ -35,10 +35,6 @@ public class LoggingAspect {
         log.info(codeSignature.getName() + signature.stream().collect(Collectors.joining(", ", "(", ")")));
     }
 
-    private void loggingInfoSignatureAfter(JoinPoint joinPoint) {
-        log.info("COMPLETED USING " + joinPoint.getSignature().getDeclaringTypeName());
-    }
-
     private void loggingError(JoinPoint joinPoint, Throwable exception) {
         log.error("IN " + joinPoint.getSignature() + " " + exception);
     }
@@ -51,16 +47,6 @@ public class LoggingAspect {
     @Before("execution(* com.example.coffee.service.*.*.* (..))")
     public void beforeServiceAdvice(JoinPoint joinPoint) {
         loggingInfoSignatureBefore(joinPoint);
-    }
-
-    @AfterReturning("execution(* com.example.coffee.controller.*.* (..))")
-    public void afterReturningControllerAdvice(JoinPoint joinPoint) {
-        loggingInfoSignatureAfter(joinPoint);
-    }
-
-    @AfterReturning("execution(* com.example.coffee.service.*.*.* (..))")
-    public void afterReturningServiceAdvice(JoinPoint joinPoint) {
-        loggingInfoSignatureAfter(joinPoint);
     }
 
     @AfterThrowing(value = "execution(* com.example.coffee.controller.*.* (..))", throwing = "exception")
