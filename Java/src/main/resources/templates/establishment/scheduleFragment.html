@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+<div th:fragment="schedule" class='row' name='schedule'>
+    <div class='col-auto' name='placeBeginDay'>
+        <select class='form-select' name='beginDay'>
+        </select>
+    </div>
+    <div class='col-auto'>
+        <p>&mdash;</p>
+    </div>
+    <div class='col-auto'>
+        <select class='form-select' name='finishDay'>
+            <option selected value=''>-</option>
+        </select>
+    </div>
+    <div class='col'>
+        <input class='flatpickr flatpickr-input' name='beginTime'>
+    </div>
+    <div class='col'>
+        <span>&mdash;</span>
+    </div>
+    <div class='col'>
+        <input class='flatpickr flatpickr-input' name='finishTime'>
+    </div>
+    <div class='col'>
+        <button type='button' name='deleteSchedule' class='btn btn-danger' disabled>Убрать</button>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div class="row" th:fragment="sidebarHorizontal">
+    <div class="col">
+        <nav class="navbar navbar-dark bg-dark justify-content-end">
+            <a class="nav-link bg-dark text-white-50 active" aria-current="page" href="#">Выход</a>
+        </nav>
+    </div>
+</div>
+
+<div class="col-auto bg-dark" th:fragment="sidebarVertical">
+    <nav class="nav flex-column navbar-dark bg-dark">
+        <a class="nav-link bg-dark text-white-50 active" aria-current="page" href="#">Статистика</a>
+        <a class="nav-link bg-dark text-white-50" th:href="@{/private-policy}">Политика конфиденциальности</a>
+        <a class="nav-link bg-dark text-white-50" th:href="@{/main-screen}">Главный экран</a>
+        <a class="nav-link bg-dark text-white-50" th:href="@{/establishment}">Заведения</a>
+        <a class="nav-link bg-dark text-white-50" th:href="@{/additive}">Добавки</a>
+        <a class="nav-link bg-dark text-white-50" href="#">Размер</a>
+
+        <nav class="navbar">
+            <a class="btn btn-link nav-link bg-dark text-white-50" data-bs-toggle="collapse"
+               data-bs-target="#navbarProducts"
+               aria-controls="navbarProducts" aria-expanded="false" aria-label="Toggle navigation">
+                Продукты
+                <span class="badge">
+                    <img src="/defaultImage/caret-down-fill.svg">
+                </span>
+            </a>
+        </nav>
+        <div class="collapse" id="navbarProducts">
+            <a class="nav-link bg-secondary text-white-50" href="#">Акции</a>
+            <a class="nav-link bg-secondary text-white-50" href="#">Категории продуктов</a>
+        </div>
+
+        <nav class="navbar">
+            <a class="btn btn-link nav-link bg-dark text-white-50" data-bs-toggle="collapse"
+               data-bs-target="#navbarOrders"
+               aria-controls="navbarOrders" aria-expanded="false" aria-label="Toggle navigation">
+                Заказы
+                <span class="badge">
+                    <img src="/defaultImage/caret-down-fill.svg">
+                </span>
+            </a>
+        </nav>
+        <div class="collapse" id="navbarOrders">
+            <a class="nav-link bg-secondary text-white-50" href="#">Список заказов</a>
+            <a class="nav-link bg-secondary text-white-50" href="#">Заказы для обссслуживающего</a>
+        </div>
+
+        <nav class="navbar">
+            <a class="btn btn-link nav-link bg-dark text-white-50" data-bs-toggle="collapse"
+               data-bs-target="#navbarEmployees"
+               aria-controls="navbarEmployee" aria-expanded="false" aria-label="Toggle navigation">
+                Сотрудники
+                <span class="badge">
+                    <img src="/defaultImage/caret-down-fill.svg">
+                </span>
+            </a>
+        </nav>
+        <div class="collapse" id="navbarEmployees">
+            <a class="nav-link bg-secondary text-white-50" href="#">Список сотрудников</a>
+            <a class="nav-link bg-secondary text-white-50" href="#">Создание сотрудника</a>
+        </div>
+        <a class="nav-link bg-dark text-white-50" href="#">Клиенты</a>
+        <a class="nav-link bg-dark text-white-50" href="#">Обратная связь</a>
+
+        <nav class="navbar">
+            <a class="btn btn-link nav-link bg-dark text-white-50" data-bs-toggle="collapse"
+               data-bs-target="#navbarSettings"
+               aria-controls="navbarSettings" aria-expanded="false" aria-label="Toggle navigation">
+                Настройки
+                <span class="badge">
+                    <img src="/defaultImage/caret-down-fill.svg">
+                </span>
+            </a>
+        </nav>
+        <div class="collapse" id="navbarSettings">
+            <a class="nav-link bg-secondary text-white-50" href="#">Активные</a>
+            <a class="nav-link bg-secondary text-white-50" href="#">Удаленные</a>
+        </div>
+        <a class="nav-link bg-dark text-white-50" href="#">Управление доступом</a>
+    </nav>
+</div>
+</html>

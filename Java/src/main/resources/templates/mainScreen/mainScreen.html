@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:insert="commonFragment/head::head('mainScreen')"></th:block>
+</head>
+
+<body>
+<th:block th:replace="commonFragment/sidebar::sidebarHorizontal"></th:block>
+<div class="row">
+    <th:block th:replace="commonFragment/sidebar::sidebarVertical"></th:block>
+    <div class="col">
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+                <h1>Верхняя карусель</h1>
+            </div>
+        </div>
+        <form class="needs-validation was-validated" method="post"
+              id="sendForm" enctype="multipart/form-data" novalidate th:object="${mainScreenForm}">
+            <div class="row">
+                <div class="col">
+                    <label for="imageSpeed" class="form-label">Скорость вращения:</label>
+                    <div class="col">
+                        <input type="range"
+                               name="imageSpeed"
+                               class="form-range w-25"
+                               min="1"
+                               max="5"
+                               step="1"
+                               value="1"
+                               id="imageSpeed"
+                               th:value="${imageSpeed}">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-auto position-relative mx-3" th:each="image : ${images}">
+                    <img width=130px
+                         th:src="${image.pathToImage}"
+                         alt="image">
+                    <button type="button"
+                            class="btn-close position-absolute top-0"
+                            aria-label="Close"
+                            th:data-id-Image="${image.idMainScreenPicture}"
+                            onclick=deleteOldImage(this)>
+                    </button>
+                </div>
+                <th:block th:insert="mainScreen/mainScreenFragments::inputImage(0)"></th:block>
+            </div>
+            <div class="row" id="errorAlert" th:if="${#fields.hasGlobalErrors()}">
+                <div class="col-auto position-relative">
+                    <div class="alert alert-danger alert-dismissible"
+                         role="alert"
+                         th:each="globalError : ${#fields.globalErrors()}"
+                         th:text="${globalError}">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <button type="button" onclick="sendForm()" id="fd" class="btn btn-success">Сохранить</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script th:inline="javascript">
+    let currentMaxId = 0;
+
+    function sendForm() {
+        $("[name = 'inputImages']").removeAttr("disabled")
+        $("[name = 'inputImages']:last").attr("disabled", true)
+        $("#sendForm").submit()
+    }
+
+    function addNewImage(thisInput) {
+        $("#previewImage" + currentMaxId).attr("src", URL.createObjectURL(thisInput.files[0]))
+        $("#inputImage" + currentMaxId).attr("disabled", true).after(
+            '<button type="button" class="btn-close position-absolute top-0" aria-label="Close" name="deleteNewImage"></button>'
+        )
+        currentMaxId++;
+        $.ajax(
+            {
+                url: "/main-screen/get-input-image",
+                method: "POST",
+                data: {
+                    idInput: currentMaxId
+                },
+                success: function (dataHtml) {
+                    $("[name = 'imagesPlace']:last").after(dataHtml)
+                }
+            }
+        )
+
+        $("[name = 'deleteNewImage']").click(
+            function () {
+                $(this).closest("div").remove()
+            }
+        )
+    }
+
+    function deleteOldImage(deleteButtonElement) {
+        $(deleteButtonElement).closest("div").before(
+            $('<input name="idOldImagesForDelete" hidden value=' + deleteButtonElement.dataset.idImage + '>')
+        )
+        $(deleteButtonElement).closest("div").remove()
+    }
+</script>
+</body>
+</html>

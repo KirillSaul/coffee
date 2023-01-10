@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:insert="commonFragment/head::head('Additives')"></th:block>
+</head>
+
+<body>
+<th:block th:replace="commonFragment/sidebar::sidebarHorizontal"></th:block>
+<div class="row">
+    <th:block th:replace="commonFragment/sidebar::sidebarVertical"></th:block>
+    <div class="col my-3">
+        <div class="row container">
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <h2>Добавки</h2>
+                </div>
+            </div>
+            <div class="row border border-3 border-dark">
+                <div class="col-auto my-3" th:each="additiveCategory : ${additiveCategories}">
+                   <a th:href="@{{requestURI}/{idAdditiveCategory}(idAdditiveCategory = ${additiveCategory.idAdditiveCategory},requestURI=${#request.getRequestURI()})}">
+                       <button type="button" class="btn btn-warning" th:text="${additiveCategory.name}"></button>
+                   </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

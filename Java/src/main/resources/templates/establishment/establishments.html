@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:insert="commonFragment/head::head('Establishment')"></th:block>
+    <script src="/templates/js/establishment/establishments.js"></script>
+</head>
+
+<body>
+<th:block th:replace="commonFragment/sidebar::sidebarHorizontal"></th:block>
+<div class="row">
+    <th:block th:replace="commonFragment/sidebar::sidebarVertical"></th:block>
+    <div class="col">
+        <div class="row">
+            <div class="col  d-flex justify-content-end">
+                <a th:href="@{/establishment/create}">
+                    <img src="/defaultImage/add.svg" width="80">
+                </a>
+            </div>
+        </div>
+        <div class="row bg-warning">
+            <div class="col d-flex justify-content-center">
+                Активные
+            </div>
+        </div>
+        <form id="activeForm">
+            <div class="row">
+                <div class="col d-flex justify-content-start">
+                    <label for="selectCityEstablishmentsActive">Город:</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col d-flex justify-content-start">
+                    <select class="form-select w-25"
+                            id="selectCityEstablishmentsActive"
+                            name="selectCityEstablishmentsActive"
+                            multiple>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Город</th>
+                            <th scope="col">Улица</th>
+                            <th scope="col">Номер улицы</th>
+                            <th scope="col">Управление</th>
+                        </tr>
+                        </thead>
+                        <tbody id="activeTableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row my-3">
+                <div class="col-auto">
+                    <label for="activePageSize">Количество записей:</label>
+                </div>
+                <div class="col-auto d-flex justify-content-start">
+                    <select class="form-select" id="activePageSize" name="activePageSize">
+                        <option selected="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                    </select>
+                </div>
+
+                <div class="col d-flex justify-content-end" id="paginationActiveEstablishment">
+                    <input name="activePage" id="activePage" value="0" hidden>
+                    <nav>
+                        <ul class="pagination">
+                            <li class="page-item disabled"
+                                value="0"
+                                name="paginationActiveEstablishment"
+                                id="toStartPaginationActiveEstablishment"
+                            >
+                                <a class="page-link" tabindex="-1" aria-disabled="true">В начало</a>
+                            </li>
+
+                            <li class="page-item"
+                                name="paginationActiveEstablishment"
+                                id="toEndPaginationActiveEstablishment"
+                            >
+                                <a class="page-link">В конец</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </form>
+        <div class="row bg-warning">
+            <div class="col d-flex justify-content-center">
+                Удаленные
+            </div>
+        </div>
+        <form id="deletedForm">
+            <div class="row">
+                <div class="col d-flex justify-content-start">
+                    <label for="selectCityEstablishmentsDeleted">Город:</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col d-flex justify-content-start">
+                    <select class="form-select w-25"
+                            id="selectCityEstablishmentsDeleted"
+                            name="selectCityEstablishmentsDeleted"
+                            multiple>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Город</th>
+                            <th scope="col">Улица</th>
+                            <th scope="col">Номер улицы</th>
+                            <th scope="col">Управление</th>
+                        </tr>
+                        </thead>
+                        <tbody id="deletedTableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row my-3">
+                <div class="col-auto">
+                    <label for="deletedPageSize">Количество записей:</label>
+                </div>
+                <div class="col-auto d-flex justify-content-start">
+                    <select class="form-select" id="deletedPageSize" name="deletedPageSize">
+                        <option selected="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                    </select>
+                </div>
+
+                <div class="col d-flex justify-content-end" id="paginationDeletedEstablishment">
+                    <input name="deletedPage" id="deletedPage" value="0" hidden>
+                    <nav>
+                        <ul class="pagination">
+                            <li class="page-item disabled"
+                                value="0"
+                                name="paginationDeletedEstablishment"
+                                id="toStartPaginationDeletedEstablishment"
+                            >
+                                <a class="page-link" tabindex="-1" aria-disabled="true">В начало</a>
+                            </li>
+                            <li class="page-item"
+                                name="paginationDeletedEstablishment"
+                                id="toEndPaginationDeletedEstablishment"
+                            >
+                                <a class="page-link">В конец</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

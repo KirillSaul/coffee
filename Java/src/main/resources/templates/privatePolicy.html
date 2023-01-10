@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:insert="commonFragment/head::head('PrivatePolicy')"></th:block>
+</head>
+
+<body>
+<th:block th:replace="commonFragment/sidebar::sidebarHorizontal"></th:block>
+<div class="row">
+    <th:block th:replace="commonFragment/sidebar::sidebarVertical"></th:block>
+    <div class="col">
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+                <h1>Политика конфендициальности</h1>
+            </div>
+        </div>
+        <form method="post">
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <textarea name="descriptionPrivatePolicy" cols="80" rows="25"
+                              th:text="${descriptionPrivatePolicy}">
+                    </textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <button type="submit" class="btn btn-success">Success</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

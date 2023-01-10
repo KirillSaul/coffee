@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:insert="commonFragment/head::head('CreateEstablishment')"></th:block>
+    <script src="/templates/js/establishment/createEditEstablishment.js"></script>
+</head>
+
+<body>
+<th:block th:replace="commonFragment/sidebar::sidebarHorizontal"></th:block>
+<div class="row">
+    <th:block th:replace="commonFragment/sidebar::sidebarVertical"></th:block>
+    <div class="col my-3">
+        <div class="row container">
+            <div class="col">
+                <a href="./">
+                    <button type="button" class="btn btn-info">Назад</button>
+                </a>
+                <form th:action="@{/establishment/create}" method="post" th:object="${establishmentForm}">
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-2">
+                                    <label for="selectIdCity">Город:</label>
+                                </div>
+                                <div class="col-2">
+                                    <label for="selectIdStreet">Улица:</label>
+                                </div>
+                                <div class="col-2">
+                                    <label for="streetNumber">Номер:</label>
+                                </div>
+                                <div class="col">
+                                    <label>Первый номер телефона:</label>
+                                </div>
+                                <div class="col">
+                                    <label>Второй номер телефона:</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-2">
+                                    <select class="form-select" id="selectIdCity" name="selectIdCity" required>
+                                    </select>
+                                </div>
+                                <div class="col-2">
+                                    <select class="form-select" id="selectIdStreet" name="selectIdStreet" required>
+                                    </select>
+                                </div>
+                                <div class="col-2">
+                                    <input class="form-control" type="number" id="streetNumber" name="streetNumber" required>
+                                </div>
+                                <div class="col d-flex justify-content-start">
+                                    <input class="form-control phone-mask" name="firstPhoneNumber">
+                                </div>
+                                <div class="col d-flex justify-content-start">
+                                    <input class="form-control phone-mask" name="secondPhoneNumber">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row my-3">
+                        <div class="col d-flex justify-content-center">
+                            <div class="border border-dark">
+                                <div class="row">
+                                    <div class="col d-flex justify-content-center">
+                                        <label>График работы:</label>
+                                    </div>
+                                </div>
+                                <div class="row mx-3">
+                                    <div class="col" id="placeForSchedule">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <label>Дни работы:</label>
+                                            </div>
+                                            <div class="col">
+                                                <label>Время работы:</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row my-3">
+                                    <div class="col d-flex justify-content-center">
+                                        <button type="button" class="btn btn-info" id="addSchedule">Добавить график
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-flex justify-content-center">
+                            <button type="submit" class="btn btn-success">Сохранить</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+<script th:inline="javascript">
+    let daysOfTheWeekEnum = /*[[${daysOfTheWeekEnum}]]*/;
+    let daysOfTheWeekEnumValues = /*[[${daysOfTheWeekEnumValues}]]*/;
+</script>
+</html>

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="inputImage(idNumber)" class="col-auto position-relative" name="imagesPlace">
+    <label th:for="'inputImage' + ${idNumber}" class="form-label" th:id="'labelInputImage' + ${idNumber}">
+        <img width=130px th:id="'previewImage' + ${idNumber}" alt="image" src="/defaultImage/add.svg">
+    </label>
+    <input class="form-control" onchange="addNewImage(this)" type="file" name="inputImages"
+           th:id="'inputImage'+ ${idNumber}" accept="image/*" hidden>
+</div>
+</body>
+</html>
