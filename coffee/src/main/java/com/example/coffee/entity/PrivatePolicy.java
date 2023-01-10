@@ -7,9 +7,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Builder
-@Getter
-@Setter
-@ToString
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -22,18 +20,4 @@ public class PrivatePolicy {
 
     @Column(name = "description", nullable = false, length = -1, columnDefinition = "text")
     private String description;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        PrivatePolicy that = (PrivatePolicy) o;
-
-        return Objects.equals(idPrivatePolicy, that.idPrivatePolicy);
-    }
-
-    @Override
-    public int hashCode() {
-        return 1584937793;
-    }
 }

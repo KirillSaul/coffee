@@ -7,9 +7,7 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
-@Getter
-@Setter
-@ToString
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -28,17 +26,5 @@ public class City {
     @ToString.Exclude
     private Collection<Establishment> establishments;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        City city = (City) o;
 
-        return Objects.equals(idCity, city.idCity);
-    }
-
-    @Override
-    public int hashCode() {
-        return 39525063;
-    }
 }

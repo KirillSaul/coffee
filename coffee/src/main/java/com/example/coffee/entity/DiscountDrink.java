@@ -6,9 +6,7 @@ import org.hibernate.Hibernate;
 import javax.persistence.*;
 import java.util.Objects;
 
-@Getter
-@Setter
-@ToString
+@Data
 @NoArgsConstructor
 @Entity
 @Table(name = "discount_drinks", schema = "coffee", catalog = "coffee")
@@ -24,18 +22,4 @@ public class DiscountDrink {
     @ManyToOne
     @JoinColumn(name = "id_drink_type", nullable = false)
     private DrinkType drinkTypeByIdDrinkType;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        DiscountDrink that = (DiscountDrink) o;
-
-        return Objects.equals(idDiscountDrink, that.idDiscountDrink);
-    }
-
-    @Override
-    public int hashCode() {
-        return 722083191;
-    }
 }

@@ -6,8 +6,7 @@ import org.hibernate.Hibernate;
 import javax.persistence.*;
 import java.util.Objects;
 @AllArgsConstructor
-@Getter
-@Setter
+@Data
 @ToString
 @Entity
 @Table(name = "main_screen_settings", schema = "coffee", catalog = "coffee")
@@ -26,19 +25,5 @@ public class MainScreenSetting {
 
     public MainScreenSetting(Integer imageSpeed) {
         this.imageSpeed = imageSpeed;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        MainScreenSetting that = (MainScreenSetting) o;
-
-        return Objects.equals(idMainScreenSetting, that.idMainScreenSetting);
-    }
-
-    @Override
-    public int hashCode() {
-        return 892665316;
     }
 }

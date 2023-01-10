@@ -30,9 +30,7 @@ import static java.util.Objects.isNull;
         }
 )
 @Table(name = "establishments", schema = "coffee", catalog = "coffee")
-@Getter
-@Setter
-@ToString
+@Data
 @AllArgsConstructor
 @Builder
 @Entity
@@ -82,19 +80,5 @@ public class Establishment {
             this.schedules.clear();
             this.schedules.addAll(schedules);
         }
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Establishment that = (Establishment) o;
-
-        return Objects.equals(idEstablishment, that.idEstablishment);
-    }
-
-    @Override
-    public int hashCode() {
-        return 292390513;
     }
 }
